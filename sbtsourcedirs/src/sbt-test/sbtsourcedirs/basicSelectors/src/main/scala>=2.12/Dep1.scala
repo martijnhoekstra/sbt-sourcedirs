@@ -1,0 +1,1 @@
+trait Dep1
