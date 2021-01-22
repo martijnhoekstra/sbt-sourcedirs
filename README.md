@@ -1,3 +1,6 @@
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.heroestools/sbt-sourcedirs/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.heroestools/sbt-sourcedirs)
+
+
 ## sbt-sourcedirs
 
 version-dependent source directories for sbt in npm SemVer range syntax
@@ -6,10 +9,6 @@ version-dependent source directories for sbt in npm SemVer range syntax
 * `projectdir/src/main/scala>=2.13/` will be used for scala versions 2.13.0 and later
 * `projectdir/src/main/scala^2.13.2/` will be used for scala 2.13.2 <= version < 3.0.0
 * `projectdir/src/main/scala>=3.0.0-M2 <3.0.0-RC/` will be used for all dotty milestone releases after 2 (but not RCs)
-
-### Status
-
-Not yet published
 
 ### Installation
 
