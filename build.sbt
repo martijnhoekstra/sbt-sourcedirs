@@ -24,6 +24,8 @@ lazy val sbtsourcedirs = project
     },
     scriptedBufferLog := false,
     libraryDependencies += "com.heroestools" %% "semver4s" % "0.2.0",
-    sonatypeProjectHosting := Some(GitHubHosting("martijnhoekstra", "sbt-sourcedirs", "martijnhoekstra@gmail.com")),
-    publishTo := sonatypePublishToBundle.value,
+    sonatypeProjectHosting := Some(
+      GitHubHosting("martijnhoekstra", "sbt-sourcedirs", "martijnhoekstra@gmail.com")
+    ),
+    publishTo := sonatypePublishToBundle.value
   )
