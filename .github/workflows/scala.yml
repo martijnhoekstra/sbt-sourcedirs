@@ -20,7 +20,7 @@ jobs:
     - name: Run tests
       run: sbt --client test
     - name: Run scripted tests
-      runs: sbt --client scripted
+      run: sbt --client scripted
     - name: Check scalafmt
       run: sbt --client scalafmtCheckAll
     - name: Check scalafmt of sbt files
