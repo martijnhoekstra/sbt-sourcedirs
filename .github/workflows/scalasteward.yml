@@ -1,0 +1,17 @@
+# Launch scala steward on each merge to main and daily at noon
+name: Scala Steward
+on:
+  push:
+    branches: main
+  schedule:
+    - cron: '0 12 * * *'
+
+jobs:
+  scala-steward:
+    runs-on: ubuntu-latest
+    name: Launch Scala Steward
+    steps:
+      - name: Launch Scala Steward
+        uses: scala-steward-org/scala-steward-action@v2
+        with:
+          github-token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
