@@ -11,7 +11,7 @@ object Sourcedirs extends AutoPlugin {
   def semverDirs(
       scalaSource: File,
       scalaVersion: Version,
-      alwaysPre: Boolean,
+      allowAllPre: Boolean,
       log: Logger
   ): List[File] = {
     val basedir = scalaSource.getParentFile()
@@ -35,7 +35,7 @@ object Sourcedirs extends AutoPlugin {
 
         def matches(matcher: Matcher) = {
           val result =
-            if (alwaysPre) matcher.matches(scalaVersion, PreReleaseBehaviour.Always)
+            if (allowAllPre) matcher.matches(scalaVersion, PreReleaseBehaviour.Loose)
             else matcher.matches(scalaVersion)
           if (result) log.info(s"Including $file for scala version ${scalaVersion.format}")
           else log.info(s"excluding $file for scala version ${scalaVersion.format}")

@@ -18,7 +18,9 @@ jobs:
       with:
         java-version: 1.8
     - name: Run tests
-      run: sbt --client +test
+      run: sbt --client test
+    - name: Run scripted tests
+      run: sbt --client scripted
     - name: Check scalafmt
       run: sbt --client scalafmtCheckAll
     - name: Check scalafmt of sbt files
