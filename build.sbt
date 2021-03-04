@@ -1,6 +1,6 @@
 import xerial.sbt.Sonatype._
 
-ThisBuild / version := "0.1.1"
+ThisBuild / version := "0.1.2"
 ThisBuild / scalaVersion := "2.12.13"
 ThisBuild / organization := "com.heroestools"
 ThisBuild / licenses := Seq("GPLv3" -> url("https://www.gnu.org/licenses/gpl-3.0.en.html"))
@@ -23,7 +23,7 @@ lazy val sbtsourcedirs = project
       scriptedLaunchOpts.value ++ List("-Xmx1024M", "-Dplugin.version=" + version.value)
     },
     scriptedBufferLog := false,
-    libraryDependencies += "com.heroestools" %% "semver4s" % "0.2.0",
+    libraryDependencies += "com.heroestools" %% "semver4s" % "0.3.0",
     sonatypeProjectHosting := Some(
       GitHubHosting("martijnhoekstra", "sbt-sourcedirs", "martijnhoekstra@gmail.com")
     ),

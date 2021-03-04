@@ -24,10 +24,12 @@ object Sourcedirs extends AutoPlugin {
       s"scanning for directories with semver ranges matching scala version ${scalaVersion.format}"
     )
 
+    val preBehaviour = if (allowAllPre) PreReleaseBehaviour.Loose else PreReleaseBehaviour.Strict
+
     subdirs.toList.filter(file => {
       val pattern = file.getName().drop(5).dropWhile(_ == '-')
       pattern == "" || {
-        val parsed = semVerMatcher.parseAll(pattern)
+        val parsed = parseMatcher(pattern)
 
         if (parsed.isLeft) {
           log.warn(s"directory $file with invalid semver range pattern $pattern ignored")
@@ -35,7 +37,7 @@ object Sourcedirs extends AutoPlugin {
 
         def matches(matcher: Matcher) = {
           val result =
-            if (allowAllPre) matcher.matches(scalaVersion, PreReleaseBehaviour.Loose)
+            if (allowAllPre) matcher.matches(scalaVersion, preBehaviour)
             else matcher.matches(scalaVersion)
           if (result) log.info(s"Including $file for scala version ${scalaVersion.format}")
           else log.info(s"excluding $file for scala version ${scalaVersion.format}")
@@ -63,19 +65,13 @@ object Sourcedirs extends AutoPlugin {
   // a group of settings that are automatically added to projects.
   override val projectSettings =
     inConfig(Compile)(List(unmanagedSourceDirectories := {
-      semVer
-        .parseAll(scalaVersion.value)
-        .toOption
-        .toList
+      parseVersion(scalaVersion.value).toOption.toList
         .flatMap(vv =>
           semverDirs(scalaSource.value, vv, sourcedirsMatchPrereleases.value, sLog.value)
         )
     })) ++
       inConfig(Test)(List(unmanagedSourceDirectories := {
-        semVer
-          .parseAll(scalaVersion.value)
-          .toOption
-          .toList
+        parseVersion(scalaVersion.value).toOption.toList
           .flatMap(vv =>
             semverDirs(
               scalaSource.value.getParentFile(),
