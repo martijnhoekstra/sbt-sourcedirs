@@ -19,7 +19,7 @@ to allow warning suppression.
 Put the following in `project/plugins.sbt`:
 
 ```scala
-addSbtPlugin("com.heroestools" %% "sbt-sourcedirs" % "0.1.2")
+addSbtPlugin("com.heroestools" %% "sbt-sourcedirs" % "1.0.0")
 ```
 
 and that's all.
