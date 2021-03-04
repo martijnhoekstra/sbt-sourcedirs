@@ -1,9 +1,9 @@
 import xerial.sbt.Sonatype._
 
-ThisBuild / version := "0.1.2"
+ThisBuild / version := "1.0.0"
 ThisBuild / scalaVersion := "2.12.13"
 ThisBuild / organization := "com.heroestools"
-ThisBuild / licenses := Seq("GPLv3" -> url("https://www.gnu.org/licenses/gpl-3.0.en.html"))
+ThisBuild / licenses := Seq("LGPLv3" -> url("https://www.gnu.org/licenses/lgpl-3.0.en.html"))
 ThisBuild / developers := List(
   Developer(
     id = "Martijn",
