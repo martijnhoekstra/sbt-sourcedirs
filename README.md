@@ -9,13 +9,17 @@ version-dependent source directories for sbt in npm SemVer range syntax
 * `projectdir/src/main/scala>=2.13/` will be used for scala versions 2.13.0 and later
 * `projectdir/src/main/scala^2.13.2/` will be used for scala 2.13.2 <= version < 3.0.0
 * `projectdir/src/main/scala>=3.0.0-M2 <3.0.0-RC/` will be used for all dotty milestone releases after 2 (but not RCs)
+* `projectdir/src/main/scala^2.13.2 || ~2.12.13/` will be used for scala 2.13.2 <= version < 3.0.0 and 2.12.13 <= version < 2.13
+
+Connoisseurs may recognize the last pattern as the version range in which the scala reporter changed
+to allow warning suppression.
 
 ### Installation
 
 Put the following in `project/plugins.sbt`:
 
 ```scala
-addSbtPlugin("com.heroestools" %% "sbt-sourcedirs" % "0.1.0")
+addSbtPlugin("com.heroestools" %% "sbt-sourcedirs" % "0.1.2")
 ```
 
 and that's all.
